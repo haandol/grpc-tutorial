@@ -34,10 +34,10 @@ class TodoStub(object):
                 request_serializer=todo__pb2.RequestId.SerializeToString,
                 response_deserializer=todo__pb2.Empty.FromString,
                 )
-        self.listTodos = channel.unary_unary(
+        self.listTodos = channel.unary_stream(
                 '/todoPackage.Todo/listTodos',
                 request_serializer=todo__pb2.Empty.SerializeToString,
-                response_deserializer=todo__pb2.TodoItems.FromString,
+                response_deserializer=todo__pb2.TodoItem.FromString,
                 )
         self.save = channel.unary_unary(
                 '/todoPackage.Todo/save',
@@ -108,10 +108,10 @@ def add_TodoServicer_to_server(servicer, server):
                     request_deserializer=todo__pb2.RequestId.FromString,
                     response_serializer=todo__pb2.Empty.SerializeToString,
             ),
-            'listTodos': grpc.unary_unary_rpc_method_handler(
+            'listTodos': grpc.unary_stream_rpc_method_handler(
                     servicer.listTodos,
                     request_deserializer=todo__pb2.Empty.FromString,
-                    response_serializer=todo__pb2.TodoItems.SerializeToString,
+                    response_serializer=todo__pb2.TodoItem.SerializeToString,
             ),
             'save': grpc.unary_unary_rpc_method_handler(
                     servicer.save,
@@ -202,9 +202,9 @@ class Todo(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/todoPackage.Todo/listTodos',
+        return grpc.experimental.unary_stream(request, target, '/todoPackage.Todo/listTodos',
             todo__pb2.Empty.SerializeToString,
-            todo__pb2.TodoItems.FromString,
+            todo__pb2.TodoItem.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 

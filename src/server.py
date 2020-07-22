@@ -43,10 +43,10 @@ class DB(object):
         return todo
 
     def list_todo(self):
-        return todo_pb2.TodoItems(items=[
+        return (
             todo_pb2.TodoItem(id=id, text=text)
             for id, text in self.data.items()
-        ])
+        )
 
     def save(self):
         with open('db.json', 'w') as fp:
@@ -74,7 +74,7 @@ class TodoServicer(todo_pb2_grpc.TodoServicer):
     def deleteTodo(self, request, context):
         return self.db.delete(request)
 
-    def listTodos(self):
+    def listTodos(self, request, context):
         return self.db.list_todo()
 
     def save(self, request, context):

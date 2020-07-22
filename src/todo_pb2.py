@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\ntodo.proto\x12\x0btodoPackage\"\x07\n\x05\x45mpty\"\x17\n\tRequestId\x12\n\n\x02id\x18\x01 \x01(\t\"$\n\x08TodoItem\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\"1\n\tTodoItems\x12$\n\x05items\x18\x01 \x01(\x0b\x32\x15.todoPackage.TodoItem2\xdb\x02\n\x04Todo\x12:\n\ncreateTodo\x12\x15.todoPackage.TodoItem\x1a\x15.todoPackage.TodoItem\x12\x38\n\x07getTodo\x12\x16.todoPackage.RequestId\x1a\x15.todoPackage.TodoItem\x12:\n\nupdateTodo\x12\x15.todoPackage.TodoItem\x1a\x15.todoPackage.TodoItem\x12\x38\n\ndeleteTodo\x12\x16.todoPackage.RequestId\x1a\x12.todoPackage.Empty\x12\x37\n\tlistTodos\x12\x12.todoPackage.Empty\x1a\x16.todoPackage.TodoItems\x12.\n\x04save\x12\x12.todoPackage.Empty\x1a\x12.todoPackage.Emptyb\x06proto3'
+  serialized_pb=b'\n\ntodo.proto\x12\x0btodoPackage\"\x07\n\x05\x45mpty\"\x17\n\tRequestId\x12\n\n\x02id\x18\x01 \x01(\t\"$\n\x08TodoItem\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t2\xdc\x02\n\x04Todo\x12:\n\ncreateTodo\x12\x15.todoPackage.TodoItem\x1a\x15.todoPackage.TodoItem\x12\x38\n\x07getTodo\x12\x16.todoPackage.RequestId\x1a\x15.todoPackage.TodoItem\x12:\n\nupdateTodo\x12\x15.todoPackage.TodoItem\x1a\x15.todoPackage.TodoItem\x12\x38\n\ndeleteTodo\x12\x16.todoPackage.RequestId\x1a\x12.todoPackage.Empty\x12\x38\n\tlistTodos\x12\x12.todoPackage.Empty\x1a\x15.todoPackage.TodoItem0\x01\x12.\n\x04save\x12\x12.todoPackage.Empty\x1a\x12.todoPackage.Emptyb\x06proto3'
 )
 
 
@@ -120,43 +120,9 @@ _TODOITEM = _descriptor.Descriptor(
   serialized_end=97,
 )
 
-
-_TODOITEMS = _descriptor.Descriptor(
-  name='TodoItems',
-  full_name='todoPackage.TodoItems',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='items', full_name='todoPackage.TodoItems.items', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=99,
-  serialized_end=148,
-)
-
-_TODOITEMS.fields_by_name['items'].message_type = _TODOITEM
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['RequestId'] = _REQUESTID
 DESCRIPTOR.message_types_by_name['TodoItem'] = _TODOITEM
-DESCRIPTOR.message_types_by_name['TodoItems'] = _TODOITEMS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
@@ -180,13 +146,6 @@ TodoItem = _reflection.GeneratedProtocolMessageType('TodoItem', (_message.Messag
   })
 _sym_db.RegisterMessage(TodoItem)
 
-TodoItems = _reflection.GeneratedProtocolMessageType('TodoItems', (_message.Message,), {
-  'DESCRIPTOR' : _TODOITEMS,
-  '__module__' : 'todo_pb2'
-  # @@protoc_insertion_point(class_scope:todoPackage.TodoItems)
-  })
-_sym_db.RegisterMessage(TodoItems)
-
 
 
 _TODO = _descriptor.ServiceDescriptor(
@@ -196,8 +155,8 @@ _TODO = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=151,
-  serialized_end=498,
+  serialized_start=100,
+  serialized_end=448,
   methods=[
   _descriptor.MethodDescriptor(
     name='createTodo',
@@ -245,7 +204,7 @@ _TODO = _descriptor.ServiceDescriptor(
     index=4,
     containing_service=None,
     input_type=_EMPTY,
-    output_type=_TODOITEMS,
+    output_type=_TODOITEM,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
